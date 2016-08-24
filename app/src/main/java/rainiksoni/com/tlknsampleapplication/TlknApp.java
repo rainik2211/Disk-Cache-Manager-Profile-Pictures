@@ -21,6 +21,6 @@ public class TlknApp extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
-        AvatarController.getInstance().startImageRequester();
+        AvatarController.getInstance().init();
     }
 }

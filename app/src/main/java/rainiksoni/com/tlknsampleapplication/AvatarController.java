@@ -25,6 +25,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 public class AvatarController {
 
+    private static final String TAG = AvatarController.class.getSimpleName();
+
     private BitmapLruCache memCache = null;
     private DiskLruCache diskLruCache = null;
     private static AvatarController _instance = null;
@@ -52,13 +54,6 @@ public class AvatarController {
 
 
     public AvatarController(){
-        memCache = new BitmapLruCache();
-        final File diskCacheDir = getDiskCacheDir(TlknApp.getInstance().getApplicationContext(), TlknApp.getInstance().getPackageCodePath() );
-        try {
-            diskLruCache = DiskLruCache.open( diskCacheDir, APP_VERSION, VALUE_COUNT, DISK_IMAGE_CACHE_SIZE );
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public static AvatarController getInstance(){
@@ -66,6 +61,16 @@ public class AvatarController {
             _instance = new AvatarController();
         }
         return _instance;
+    }
+
+    public void init(){
+        memCache = new BitmapLruCache();
+        final File diskCacheDir = getDiskCacheDir(TlknApp.getInstance().getApplicationContext(), TlknApp.getInstance().getPackageCodePath() );
+        try {
+            diskLruCache = DiskLruCache.open( diskCacheDir, APP_VERSION, VALUE_COUNT, DISK_IMAGE_CACHE_SIZE );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void register(IAvatarListener listener){
@@ -110,8 +115,10 @@ public class AvatarController {
 //                Bitmap bitmap = downloadBitmap(url);
             Bitmap bitmap = downloadBitmapAndroid(url);
             if(bitmap != null){
-                memCache.put(url,bitmap);
-                putBitmap(url,bitmap);
+                Log.d(TAG,"  Bitmap downloaded successfully. Saving to caches");
+
+                memCache.put(createKey(url),bitmap);
+                putBitmap(createKey(url),bitmap);
             }
             notifyListeners();
 
@@ -206,9 +213,16 @@ public class AvatarController {
     }
 
     public Bitmap getBitmap(String url){
-        Bitmap bitmap = memCache.get(url);
+        Bitmap bitmap = memCache.get(createKey(url));
         if(bitmap == null){
-            bitmap = getBitmapFromDisk(url);
+            Log.d(TAG,"memCache bitmap is NULL for url : "+url);
+            bitmap = getBitmapFromDisk(createKey(url));
+            if(bitmap != null) {
+                memCache.put(createKey(url), bitmap);
+            }else {
+                Log.d(TAG,"DiskCache bitmap is NULL for url : "+url);
+                startImageRequester();
+            }
         }
         return bitmap;
     }
@@ -221,6 +235,7 @@ public class AvatarController {
 
             snapshot = diskLruCache.get( key );
             if ( snapshot == null ) {
+                Log.d(TAG,"Snapshot is null for Key : "+key);
                 return null;
             }
             final InputStream in = snapshot.getInputStream( 0 );
@@ -243,6 +258,10 @@ public class AvatarController {
 
         return bitmap;
 
+    }
+
+    private String createKey(String url){
+        return url;//String.valueOf(url.hashCode());
     }
 
 }
