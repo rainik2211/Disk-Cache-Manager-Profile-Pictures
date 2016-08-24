@@ -3,6 +3,7 @@ package rainiksoni.com.tlknsampleapplication;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.util.Log;
 
 import java.io.BufferedInputStream;
@@ -36,8 +37,8 @@ public class AvatarController {
     private static final int NUMBER_OF_THREADS_IN_POOL = 5;
     ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(NUMBER_OF_THREADS_IN_POOL);
     private static final int APP_VERSION = BuildConfig.VERSION_CODE;
-    private static final int VALUE_COUNT = 2;
-    public static final int              DISK_IMAGE_CACHE_SIZE                = 1024*1024*10;
+    private static final int VALUE_COUNT = 1;
+    public static final int DISK_IMAGE_CACHE_SIZE = 1024*1024*10;
     private Bitmap.CompressFormat mCompressFormat = Bitmap.CompressFormat.PNG;
     private static int IO_BUFFER_SIZE = 8*1024;
     private int mCompressQuality = 70;
@@ -52,6 +53,16 @@ public class AvatarController {
             "http://yuripysar.com/wp-content/uploads/2013/11/ZGZGkjRDQE.jpg",
             "http://yuripysar.com/wp-content/uploads/2013/11/EzAQ2Ibs3qE.jpg" };
 
+    /**
+     * final static string array of {@code urlKeys} belongs to each url as url's key
+     * which in turn gets stored in cache as key to that url
+     * Bitmap images can be accessd using these key codes belonging to particular image passing
+     * each key to method {@code getBitmap}
+     */
+    public static final String [] urlKeys = {
+            "abcd_111","cdef_222", "defg_333", "fghi_444", "jklm_555", "lmno_666", "pqrs_777"
+    };
+
 
     public AvatarController(){
     }
@@ -63,6 +74,9 @@ public class AvatarController {
         return _instance;
     }
 
+    /**
+     * Initializes {@link DiskLruCache} and {@link BitmapLruCache}
+     */
     public void init(){
         memCache = new BitmapLruCache();
         final File diskCacheDir = getDiskCacheDir(TlknApp.getInstance().getApplicationContext(), TlknApp.getInstance().getPackageCodePath() );
@@ -93,7 +107,8 @@ public class AvatarController {
 
                 for (int i = 0; i < urls.length; i++) {
                     String url = urls[i];
-                    DownloadImageTask downloadImageTask = new DownloadImageTask(url);
+                    String urlKey = urlKeys[i];
+                    DownloadImageTask downloadImageTask = new DownloadImageTask(url, urlKey);
                     executor.execute(downloadImageTask);
                 }
             }
@@ -103,9 +118,11 @@ public class AvatarController {
 
     class DownloadImageTask implements Runnable {
         String url = null;
+        String urlKey = null;
 
-        public DownloadImageTask(String url) {
+        public DownloadImageTask(String url, String urlKey) {
             this.url = url;
+            this.urlKey = urlKey;
         }
 
         @Override
@@ -117,8 +134,8 @@ public class AvatarController {
             if(bitmap != null){
                 Log.d(TAG,"  Bitmap downloaded successfully. Saving to caches");
 
-                memCache.put(createKey(url),bitmap);
-                putBitmap(createKey(url),bitmap);
+                memCache.put(urlKey,bitmap);
+                putBitmap(urlKey,bitmap);
             }
             notifyListeners();
 
@@ -160,10 +177,23 @@ public class AvatarController {
     }
 
     private File getDiskCacheDir(Context context, String uniqueName) {
-        final String cachePath = context.getCacheDir().getPath();
+//        final String cachePath = context.getCacheDir().getPath();
+        final String cachePath =
+                Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) ||
+                        !Utils.isExternalStorageRemovable() ?
+                        Utils.getExternalCacheDir(context).getPath() :
+                        context.getCacheDir().getPath();
         return new File(cachePath + File.separator + uniqueName);
+
     }
 
+
+    /**
+     * Puts the bitmap in the Diskcache
+     *
+     * @param key of the image url stored in cache
+     * @param data
+     */
     private void putBitmap( String key, Bitmap data ) {
 
         DiskLruCache.Editor editor = null;
@@ -212,21 +242,38 @@ public class AvatarController {
         }
     }
 
-    public Bitmap getBitmap(String url){
-        Bitmap bitmap = memCache.get(createKey(url));
+
+    /**
+     * {@code getBitmap} method is used for loading the bitmap in any given {@link android.widget.ImageView}
+     * If image is downloaded once it can load bitmap from L1 cache(RAM) using {@link BitmapLruCache}
+     * or it loads image from L2 cache using {@code getBitmapFromDisk} using {@link DiskLruCache}
+     *
+     * If bitmap is not present in any of the cache it starts downloading image using {@link DownloadImageTask}
+     *
+     * @param urlKey used for getting image from the cache
+     * @return Bitmap belonging to that particular key in cache
+     */
+    public Bitmap getBitmap(String urlKey){
+        Bitmap bitmap = memCache.get(urlKey);
         if(bitmap == null){
-            Log.d(TAG,"memCache bitmap is NULL for url : "+url);
-            bitmap = getBitmapFromDisk(createKey(url));
+            Log.d(TAG,"memCache bitmap is NULL for urlKey : "+urlKey);
+            bitmap = getBitmapFromDisk(urlKey);
             if(bitmap != null) {
-                memCache.put(createKey(url), bitmap);
+                memCache.put(urlKey, bitmap);
             }else {
-                Log.d(TAG,"DiskCache bitmap is NULL for url : "+url);
+                Log.d(TAG,"DiskCache bitmap is NULL for urlKey : "+urlKey);
                 startImageRequester();
             }
         }
         return bitmap;
     }
 
+    /**
+     * Loads bitmap from L2 - Disk cache using {@link DiskLruCache}
+     *
+     * @param key corresponding bitmap URL
+     * @return
+     */
     public Bitmap getBitmapFromDisk( String key ) {
 
         Bitmap bitmap = null;
@@ -258,10 +305,6 @@ public class AvatarController {
 
         return bitmap;
 
-    }
-
-    private String createKey(String url){
-        return url;//String.valueOf(url.hashCode());
     }
 
 }

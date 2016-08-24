@@ -13,15 +13,18 @@ public class ContactInfo {
 
     private String contactName;
     private String contactImageUrl;
+    private String contactImageKey;
 
     public ContactInfo(String contact){
         contactName = contact;
     }
 
-    public ContactInfo(String contact, String imageUrl){
+    public ContactInfo(String contact, String imageUrl, String imageKey){
         contactName = contact;
         contactImageUrl = imageUrl;
+        contactImageKey = imageKey;
     }
+
 
 
     public String getContactName(){
@@ -38,5 +41,13 @@ public class ContactInfo {
 
     public void setContactImageUrl(String contactImageUrl) {
         this.contactImageUrl = contactImageUrl;
+    }
+
+    public String getContactImageKey() {
+        return contactImageKey;
+    }
+
+    public void setContactImageKey(String contactImageKey) {
+        this.contactImageKey = contactImageKey;
     }
 }

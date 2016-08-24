@@ -55,7 +55,7 @@ public class ContactsViewRecyclerAdapter extends RecyclerView.Adapter<ContactsVi
     @Override
     public void onBindViewHolder(ContactsViewHolder holder, int position) {
 
-        Bitmap contactAvatar = AvatarController.getInstance().getBitmap(contactList.get(position).getContactImageUrl());
+        Bitmap contactAvatar = AvatarController.getInstance().getBitmap(contactList.get(position).getContactImageKey());
         Log.d(ContactsViewRecyclerAdapter.class.getSimpleName(), "## ContactsViewRecyclerAdapter contactAvatar : "+contactAvatar);
 
         holder.contactTextView.setText((String)contactList.get(position).getContactName());

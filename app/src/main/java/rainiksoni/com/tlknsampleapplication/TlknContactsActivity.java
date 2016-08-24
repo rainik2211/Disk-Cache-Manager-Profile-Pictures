@@ -53,7 +53,7 @@ public class TlknContactsActivity extends AppCompatActivity implements IAvatarLi
         Cursor cursor = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null);
         while (cursor.moveToNext()) {
             String s1 = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
-            ContactInfo contactInfo = new ContactInfo(s1, AvatarController.urls[Utils.getSortedImage(j)]);
+            ContactInfo contactInfo = new ContactInfo(s1, AvatarController.urls[Utils.getSortedImage(j)], AvatarController.urlKeys[Utils.getSortedImage(j)]);
             j++;
             contactName.add(contactInfo);
         }

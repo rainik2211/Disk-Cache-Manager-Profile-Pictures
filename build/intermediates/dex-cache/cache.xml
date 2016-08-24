@@ -3,84 +3,84 @@
 
     <item
         is-multidex="true"
-        jar="/Users/ashwani/git/tlknsampleapp/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.3/jars/classes.jar"
-        jumboMode="true"
-        optimize="false"
-        revision="23.0.3"
-        sha1="00b0b7233e1ec64acebfac40d4983d32d4712426">
-        <dex dex="/Users/ashwani/git/tlknsampleapp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-cardview-v7-21.0.3_d428cdbf23bad9c4dc5e6189364f7e2e772f6872/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/ashwani/git/tlknsampleapp/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.3/jars/classes.jar"
-        jumboMode="true"
-        optimize="false"
-        revision="23.0.3"
-        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
-        <dex dex="/Users/ashwani/git/tlknsampleapp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-21.0.3_612c77de24ebb975adfea6d5c7b3cb7b83f49685/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/ashwani/git/tlknsampleapp/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="false"
-        revision="23.0.3"
-        sha1="ecddca49fec0e5506d33e7855158b7d47cae1901">
-        <dex dex="/Users/ashwani/git/tlknsampleapp/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_d21a80b22a0ad02c288a19c67c12dd53cdea67e7/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/ashwani/git/tlknsampleapp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="false"
-        revision="23.0.3"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="/Users/ashwani/git/tlknsampleapp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-22.2.0_3ccce3b63d376fa8146b24d139c6a26ac05bf905/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/ashwani/git/tlknsampleapp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="false"
-        revision="23.0.3"
-        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="/Users/ashwani/git/tlknsampleapp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-22.2.0_15b4ce14b43ef7bed56bbd3541a2e4f4d5a25b54/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/ashwani/git/tlknsampleapp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
-        jumboMode="true"
-        optimize="false"
-        revision="23.0.3"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="/Users/ashwani/git/tlknsampleapp/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-22.2.0_9e8414f6b7de7c8c77034932e0b108891d95bfeb/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/ashwani/git/tlknsampleapp/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="false"
-        revision="23.0.3"
-        sha1="73d0dc36eb8e0aeedf2d90905f0a0848635ba942">
-        <dex dex="/Users/ashwani/git/tlknsampleapp/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_966d6efe858d1dc64bbc666672d46f912cf7842e/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/ashwani/git/tlknsampleapp/app/build/intermediates/exploded-aar/com.pkmmte.view/circularimageview/1.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="false"
-        revision="23.0.3"
-        sha1="c341a7ad32bc2eef9dcfab239262b77ac60788cc">
-        <dex dex="/Users/ashwani/git/tlknsampleapp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.pkmmte.view-circularimageview-1.1_ba1a4b003ba6fd930deb59c9e6873454a7b66ab9/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/ashwani/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jar="/Users/rainiksoni/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
         jumboMode="true"
         optimize="false"
         revision="23.0.3"
         sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="/Users/ashwani/git/tlknsampleapp/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-22.2.0_6e16e6c8ebc158bae9c690f6f8fefbb798715994/classes.dex" />
+        <dex dex="/Users/rainiksoni/Desktop/git-projects/tlknsampleapp/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-22.2.0_399f3576e104a3c21527870980bb1a9acc891aa4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/rainiksoni/Desktop/git-projects/tlknsampleapp/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="false"
+        revision="23.0.3"
+        sha1="fb80359c57f9f8cb13ad2ccef8775cedc971171d">
+        <dex dex="/Users/rainiksoni/Desktop/git-projects/tlknsampleapp/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_7a8157c7fa41d758c4411dd23c9c3daf067dc587/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/rainiksoni/Desktop/git-projects/tlknsampleapp/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.3/jars/classes.jar"
+        jumboMode="true"
+        optimize="false"
+        revision="23.0.3"
+        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
+        <dex dex="/Users/rainiksoni/Desktop/git-projects/tlknsampleapp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-21.0.3_375f42b6de333b89ced972cfba24b9ee62525793/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/rainiksoni/Desktop/git-projects/tlknsampleapp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="false"
+        revision="23.0.3"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/Users/rainiksoni/Desktop/git-projects/tlknsampleapp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-22.2.0_bf6f7833a63a18d971fde27d1ae93fea12505ede/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/rainiksoni/Desktop/git-projects/tlknsampleapp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="true"
+        optimize="false"
+        revision="23.0.3"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/Users/rainiksoni/Desktop/git-projects/tlknsampleapp/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-22.2.0_c3d5fce8f9e210a4fd377ccc38ceb951e330b136/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/rainiksoni/Desktop/git-projects/tlknsampleapp/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="false"
+        revision="23.0.3"
+        sha1="51656968a268638e2981e863ef1b5fd9aeaba26a">
+        <dex dex="/Users/rainiksoni/Desktop/git-projects/tlknsampleapp/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_d6321122703eff00880788116cbb210527de64f6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/rainiksoni/Desktop/git-projects/tlknsampleapp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="false"
+        revision="23.0.3"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/Users/rainiksoni/Desktop/git-projects/tlknsampleapp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-22.2.0_0a6554c468bc680d9599e680b66a40ad79c24692/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/rainiksoni/Desktop/git-projects/tlknsampleapp/app/build/intermediates/exploded-aar/com.pkmmte.view/circularimageview/1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="false"
+        revision="23.0.3"
+        sha1="c341a7ad32bc2eef9dcfab239262b77ac60788cc">
+        <dex dex="/Users/rainiksoni/Desktop/git-projects/tlknsampleapp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.pkmmte.view-circularimageview-1.1_a8caf3c18d966ceac0994d5499405ebe89e04c14/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/rainiksoni/Desktop/git-projects/tlknsampleapp/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.3/jars/classes.jar"
+        jumboMode="true"
+        optimize="false"
+        revision="23.0.3"
+        sha1="00b0b7233e1ec64acebfac40d4983d32d4712426">
+        <dex dex="/Users/rainiksoni/Desktop/git-projects/tlknsampleapp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-cardview-v7-21.0.3_8728d152d06e51c752f80a975c3b4bea20f70cd2/classes.dex" />
     </item>
 
 </items>
